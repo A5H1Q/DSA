@@ -1,0 +1,44 @@
+/* > DSA > Art-of-Sorting > Bubble.c
+[================================================================]
+| Bubble sort / Sink sort
+| Works by repeatedly checking adjacent elements.
+| And Swaps them, if they are in wrong order.
+
+| Example:- Consider Array {5,1,4,2}
+| Q > 5,1,4,2
+| => 1,5,4,2
+| => 1,4,5,2
+| => 1,4,2,5
+| => pass-2
+| => 1,2,4,5
+
+| Complexity:-
+|   > Worst-case : O(n²)  // When array is reverse sorted.
+|   > Avg-case   : O(n²)
+|   > Best-case  : O(n)   // Already sorted array.
+
+| Compiling: > gcc Bubble.c -o Bubble.exe
+|            > Bubble.exe
+|            > 0 1 2 5 5 7 8
+[*/
+
+#include <stdio.h>
+int main() {
+
+  int tmp;
+  int arr[] = {8, 1, 5, 7, 2, 0, 5};
+  int len = sizeof(arr) / sizeof(arr[0]); // Array length
+  for (int i = 0; i < len; i++) {
+    for (int j = 0; j < len; j++) {
+      if (arr[i] < arr[j]) { // Swapping; use '>' to sort in Descending
+        tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
+      }
+    }
+  }
+  for (int i = 0; i < len; i++) {
+    printf("%d ", arr[i]); // Display sorted
+  }
+  return 0;
+}
